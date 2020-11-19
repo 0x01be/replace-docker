@@ -12,7 +12,18 @@ RUN apk add --no-cache --virtual replace-rutime-dependencies \
     libjpeg-turbo \
     imagemagick \
     pcre \
-    rhash
+    rhash \
+    libgomp
 
 COPY --from=build /opt/replace/ /opt/replace/
+
+RUN adduser -D -u 1000 replace
+
+WORKDIR /workspace
+
+RUN chown replace:replace /workspace
+
+USER replace
+
+ENV PATH $PATH:/opt/replace/bin/
 
