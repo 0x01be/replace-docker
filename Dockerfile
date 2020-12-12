@@ -1,6 +1,6 @@
 FROM 0x01be/swig:4.0 as swig
 
-FROM alpine
+FROM alpine:3.12.2
 
 RUN apk add --no-cache --virtual replace-build-dependencies \
     git \
