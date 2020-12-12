@@ -1,6 +1,6 @@
 FROM 0x01be/replace:build as build
 
-FROM alpine
+FROM alpine:3.12.2
 
 RUN apk add --no-cache --virtual replace-rutime-dependencies \
     zlib \
@@ -25,5 +25,5 @@ RUN chown replace:replace /workspace
 
 USER replace
 
-ENV PATH $PATH:/opt/replace/bin/
+ENV PATH=${PATH}:/opt/replace/bin/
 
